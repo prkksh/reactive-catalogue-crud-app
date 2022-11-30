@@ -21,6 +21,10 @@ public class RegistrationService {
         return registrationRepository.findAll().switchIfEmpty(Flux.empty());
     }
 
+    public Mono getById(String id) {
+        return registrationRepository.findById(id);
+    }
+
     public Mono save(Student student) {
         return registrationRepository.save(student);
     }

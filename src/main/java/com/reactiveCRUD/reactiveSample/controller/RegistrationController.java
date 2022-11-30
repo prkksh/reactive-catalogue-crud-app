@@ -21,6 +21,11 @@ public class RegistrationController {
         return registrationService.getAllStudents();
     }
 
+    @GetMapping("{id}")
+    public Mono getStudentById(@PathVariable("id") final String id) {
+        return registrationService.getById(id);
+    }
+
     @PostMapping
     public Mono save(@RequestBody final Student student) {
         return registrationService.save(student);
