@@ -1,5 +1,6 @@
 package com.reactiveCRUD.reactiveSample.model;
 
+import com.mongodb.lang.Nullable;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -17,5 +18,9 @@ public class Student {
     private String id;
     private String firstName;
     private String lastName;
+    @Nullable
+    private int age;
+    @Nullable
+    private double gpa;
 
 }
