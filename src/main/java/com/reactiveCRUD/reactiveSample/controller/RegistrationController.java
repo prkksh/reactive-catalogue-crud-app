@@ -34,7 +34,12 @@ public class RegistrationController {
     }
 
     @PostMapping
-    public Mono<ResponseEntity<Student>> save(@RequestBody final Student student) {
+    public Mono<ResponseEntity<Student>> create(@RequestBody final Student student) {
         return registrationService.save(student);
+    }
+
+    @DeleteMapping("{id}")
+    public Mono<ResponseEntity<Void>> deleteStudent(@PathVariable("id") final String id) {
+        return registrationService.deleteById(id);
     }
 }

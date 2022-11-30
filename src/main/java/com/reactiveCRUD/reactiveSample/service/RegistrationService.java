@@ -43,4 +43,10 @@ public class RegistrationService {
                 .map(ResponseEntity::ok)
                 .defaultIfEmpty(ResponseEntity.notFound().build());
     }
+
+    public Mono<ResponseEntity<Void>> deleteById(String id) {
+        return registrationRepository.findById(id).flatMap(studentFromDoc ->
+                registrationRepository.deleteById(id).then(Mono.just(new ResponseEntity<Void>(HttpStatus.OK)))
+                .defaultIfEmpty(new ResponseEntity<>(HttpStatus.NOT_FOUND)));
+    }
 }
